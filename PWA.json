@@ -1,0 +1,110 @@
+
+# 📱 PWA.md – Exemple rempli (Version Serveur + Multi-utilisateur)
+
+---
+
+## 🔧 1. Objectif de l'application
+
+L'application permet à un couple de jardiniers (moi et mon épouse) de suivre nos récoltes au fil des saisons, de gérer les différentes cultures, 
+de suivre les récoltes, de consulter les historiques et des statistiques partagées. Les données sont sauvegardées côté serveur pour consultation commune.
+L'application sera utilisée sur iPhone. 
+
+---
+
+## 🧑‍🌾 2. Profils utilisateurs
+
+- Jardinier 1 (moi)
+- Jardinier 2 (mon épouse)
+
+Tous deux accèdent à la même instance de l’app via un identifiant personnel ou un lien sécurisé.
+
+---
+
+## 📱 3. Écrans principaux
+
+- Accueil : résumé rapide des dernières récoltes
+- Ajouter une récolte : formulaire avec photo, plante, quantité, date
+- Historique : liste des récoltes passées, filtrable par mois ou plante
+- Statistiques : graphiques de production par mois/plante/utilisateur
+- Paramètres : nom d’utilisateur, langue, export JSON
+
+---
+
+## 🧭 4. Navigation
+
+- Depuis l’accueil, un bouton “+” permet d’ouvrir le formulaire d’ajout
+- Une barre de navigation donne accès à Historique, Statistiques, Paramètres
+- Un switch utilisateur permet de basculer entre les profils
+
+---
+
+## 📦 5. Données à gérer (modèles)
+
+### Récolte
+- id
+- utilisateur (string)
+- plante (string)
+- quantité (nombre en kg)
+- date (ISO)
+- photo (URL ou base64)
+- commentaire (facultatif)
+
+### Plante
+- nom
+- type (fruit/légume/aromatique)
+
+### Utilisateur
+- id
+- nom
+- couleur thème (optionnel)
+
+---
+
+## 🔐 6. Authentification
+
+- Pas d’authentification complexe
+- Une simple sélection d’utilisateur (ex : bouton "Moi" / "Mon épouse")
+- Les données sont associées à l’utilisateur sélectionné
+
+---
+
+## 🧰 7. Fonctionnalités PWA
+
+- [ ] Fonctionne hors-ligne (non prioritaire)
+- [x] Ajout à l’écran d’accueil
+- [ ] Notification push
+- [x] Prise de photo depuis l’appareil
+- [x] Synchronisation avec un serveur distant (obligatoire)
+
+---
+
+## 🌐 8. Stack technique souhaitée
+
+- Frontend : React + Vite
+- Backend : Node.js + Express
+- Persistance : fichiers `.json` (par utilisateur), mais extensible vers une base de données (SQLite, PostgreSQL, etc.)
+
+---
+
+## 🧪 9. Cas d’usage typique (user flow)
+
+1. L’un des deux utilisateurs ouvre l’app sur son iPhone
+2. Il sélectionne son profil ("Moi")
+3. Il clique sur “+” et prend une photo d’une récolte
+4. Il remplit “Carottes”, “2.5 kg”, et sélectionne la date
+5. Il valide → la récolte est envoyée et sauvegardée dans un fichier JSON côté serveur
+6. L’autre utilisateur peut consulter l’entrée sur son propre appareil
+
+---
+
+## 📁 10. Détail optionnel
+
+- Stockage côté serveur dans :
+  - `data/utilisateur1.json`
+  - `data/utilisateur2.json`
+- Export global des données via un bouton (fichier JSON)
+- Statistiques séparées ou croisées (moi vs mon épouse)
+
+---
+
+Ce modèle permet une collaboration simple à 2 utilisateurs avec synchronisation serveur et stockage dans des fichiers, tout en restant extensible vers une vraie base de données.
