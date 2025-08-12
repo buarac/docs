@@ -8,11 +8,12 @@ Ce document explique comment configurer un système de versioning automatique et
 ## 🎯 Objectif
 
 Permettre à ton application de :
-- Générer automatiquement un numéro de version (major, minor, patch)
-- Créer un changelog
-- Créer un tag Git (`v1.2.3`)
-- Faire une release GitHub
-- Sans intervention manuelle
+
+* Générer automatiquement un numéro de version (major, minor, patch)
+* Créer un changelog
+* Créer un tag Git (`v1.2.3`)
+* Faire une release GitHub
+* Sans intervention manuelle
 
 ---
 
@@ -168,3 +169,4 @@ module.exports = {
 - Publie une release GitHub
 
 Plus besoin de bump de version à la main ✨
+
